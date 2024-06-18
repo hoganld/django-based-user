@@ -33,9 +33,9 @@ class UserTest(TestCase):
         user = TestUser(email=self.email, password=self.password)
         self.assertFalse(user.is_staff)
 
-    def test_default_not_active(self):
+    def test_default_active(self):
         user = TestUser(email=self.email, password=self.password)
-        self.assertFalse(user.is_active)
+        self.assertTrue(user.is_active)
 
 
 class UserManagerTest(TestCase):
@@ -45,15 +45,15 @@ class UserManagerTest(TestCase):
 
     def test_create_default_user(self):
         user = TestUser.objects.create_user(email=self.email, password=self.password)
-        self.assertFalse(user.is_active)
+        self.assertTrue(user.is_active)
         self.assertFalse(user.is_staff)
         self.assertFalse(user.is_superuser)
 
-    def test_create_active_user(self):
+    def test_create_inactive_user(self):
         user = TestUser.objects.create_user(
-            email=self.email, password=self.password, is_active=True
+            email=self.email, password=self.password, is_active=False
         )
-        self.assertTrue(user.is_active)
+        self.assertFalse(user.is_active)
         self.assertFalse(user.is_superuser)
 
     def test_create_staff_user(self):
