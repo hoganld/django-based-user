@@ -49,7 +49,6 @@ class BasedUser(AbstractBaseUser, PermissionsMixin):
     - username
     - first_name
     - last_name
-    - date_joined
     """
 
     email = models.EmailField(_("email address"), unique=True, blank=False)
