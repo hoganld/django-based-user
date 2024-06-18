@@ -8,7 +8,7 @@ The Django authentication scheme provides for pluggable user models, and provide
 
 The problem with these classes provided by the framework is that they are still too opinionated for my liking.
 
-The primary issue is that the base implementation includes both a `username` and `email` field, and the `username` is required. For many projects, it makes sense to use the email address as the username. This can be done with the base user model, but the username is still required.
+The primary issue is that the base implementation includes both a `username` and `email` field, and the `username` is required. For many projects, it makes sense to use the email address as the username. The base user model shipped with Django allows you to use `email` as the *login* field, but the `username` is still required. (Thumbs down.)
 
 The secondary issue is that the base user model includes `first_name` and `last_name` fields. These fields are not required, so this is not a major issue, but it is annoying. You may want to use just a single `name` field, or you might choose to store the user's name in a separate `Profile` model or something like that. Or, you might choose to not even collect user's real names at all. The point is, I think that should be up to you.
 
