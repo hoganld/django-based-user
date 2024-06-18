@@ -90,11 +90,3 @@ class UserAuthenticationTest(TestCase):
         self.user.save()
         login = authenticate(email=self.email, password=self.password)
         self.assertIsNone(login)
-
-    @skipIf(True, "TODO")
-    def test_staff_user_can_login_to_admin(self):
-        pass
-
-    @skipIf(True, "TODO")
-    def test_nonstaff_user_cannot_login_to_admin(self):
-        pass
