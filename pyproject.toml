@@ -9,8 +9,8 @@ packages = [{include = "based_user"}]
 
 
 [tool.poetry.dependencies]
-python = "^3.12"
-django = "^5.0.6"
+python = ">=3.9"
+django = ">=4.2"
 
 
 [tool.poetry.group.dev.dependencies]
