@@ -16,6 +16,20 @@ See also: [Falsehoods Programmers Believe About Names](https://www.kalzumeus.com
 
 The base user class provided by this package requires only an `email` and `password`, and then a few fields required for compatibility with the Django auth and admin packages, such as `is_staff`, `is_superuser`, `groups`, etc.
 
+## Requirements
+
+`django-based-user` is a tiny package that, unfortunately, has to re-implement a few lines from `django.contrib.auth.models`. Take a look at `based_user.models` and you will see that this file started as a copy/paste of a couple of classes, and then removed a few fields and simplified a few manager methods accordingly.
+
+The point is, this package tracks `django.contrib.auth.models` closely, in order to be a drop-in replacement. The current supported versions of Django will be tracked, and unsupported/EOL versions will be officially unsupported. But, in reality, the relevant upstream code doesn't change very much very often, so older versions of Django will probably work just fine.
+
+## Installation
+
+No surprises here. Install from PyPI using `pip` or equivalent:
+
+    pip install django-based-user
+    
+And that's it. No real need to add the package to `INSTALLED_APPS`, as there are no migrations or templates or static files to be collected.
+
 ## B.Y.O.U. (Bring your own user)
 
 This package only provides an abstract base class for a custom user model, and an associated model manager class.
