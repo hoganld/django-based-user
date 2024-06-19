@@ -5,7 +5,14 @@ description = "A more based base user model for Django."
 authors = ["Luke Hogan"]
 license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/hoganld/django-based-user/"
+repository = "https://github.com/hoganld/django-based-user/"
 packages = [{include = "based_user"}]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+]
 
 
 [tool.poetry.dependencies]
