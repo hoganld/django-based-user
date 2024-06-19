@@ -1,6 +1,8 @@
 from unittest import skipIf
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate
+from django.contrib.auth.hashers import make_password
+from django.db.utils import IntegrityError
 from django.test import TestCase
 
 from .models import TestUser
@@ -37,6 +39,10 @@ class UserTest(TestCase):
         user = TestUser(email=self.email, password=self.password)
         self.assertTrue(user.is_active)
 
+    def test_date_joined(self):
+        user = TestUser(email=self.email, password=self.password)
+        self.assertTrue(bool(user.date_joined))
+
 
 class UserManagerTest(TestCase):
 
@@ -70,6 +76,25 @@ class UserManagerTest(TestCase):
         self.assertTrue(user.is_active)
         self.assertTrue(user.is_staff)
         self.assertTrue(user.is_superuser)
+
+    def test_email_normalization(self):
+        allcaps = "TEST@EXAMPLE.COM"
+        expected = "TEST@example.com"
+        user = TestUser.objects.create_user(email=allcaps, password=self.password)
+        self.assertEqual(user.email, expected)
+
+    def test_password_hash(self):
+        user = TestUser.objects.create_user(email=self.email, password=self.password)
+        hashed_password = make_password(self.password)
+        self.assertNotEqual(user.password, hashed_password)
+        self.assertEqual(user.password.split("$")[0], hashed_password.split("$")[0])
+
+    def test_unique_emails(self):
+        TestUser.objects.create_user(email=self.email, password=self.password)
+        with self.assertRaises(IntegrityError):
+            TestUser.objects.create_user(
+                email=self.email, password=self.password.upper()
+            )
 
 
 class UserAuthenticationTest(TestCase):
