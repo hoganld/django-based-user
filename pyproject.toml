@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-based-user"
-version = "0.1.1"
+version = "0.1.2"
 description = "A more based base user model for Django."
 authors = ["Luke Hogan"]
 license = "MIT"
