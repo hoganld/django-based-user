@@ -1,4 +1,4 @@
-# A more based base user for Django.
+# A more *based* base user for Django.
 
 `django-based-user` provides a clean minimal starting point for custom Django user models.
 
@@ -10,7 +10,7 @@ The problem with these classes provided by the framework is that they are still 
 
 The primary issue is that the base implementation includes both a `username` and `email` field, and the `username` is required. For many projects, it makes sense to use the email address as the username. The base user model shipped with Django allows you to use `email` as the *login* field, but the `username` is still required. (Thumbs down.)
 
-The secondary issue is that the base user model includes `first_name` and `last_name` fields. These fields are not required, so this is not a major issue, but it is annoying. You may want to use just a single `name` field, or you might choose to store the user's name in a separate `Profile` model or something like that. Or, you might choose to not even collect user's real names at all. The point is, I think that should be up to you.
+The secondary issue is that the base user model includes `first_name` and `last_name` fields. These fields are not required, so this is not a major issue, but it is annoying. You may want to use just a single `name` field, or you might choose to store the user's name in a separate `Profile` model or something like that. Or, you might choose to not even collect user's real names at all. I think that should be up to you.
 
 See also: [Falsehoods Programmers Believe About Names](https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/)
 
@@ -18,9 +18,12 @@ The base user class provided by this package requires only an `email` and `passw
 
 ## Requirements
 
+- Python 3.9+
+- Django 4.2+
+
 `django-based-user` is a tiny package that, unfortunately, has to re-implement a few lines from `django.contrib.auth.models`. Take a look at `based_user.models` and you will see that this file started as a copy/paste of a couple of classes, and then removed a few fields and simplified a few manager methods accordingly.
 
-The point is, this package tracks `django.contrib.auth.models` closely, in order to be a drop-in replacement. The current supported versions of Django will be tracked, and unsupported/EOL versions will be officially unsupported. But, in reality, the relevant upstream code doesn't change very much very often, so older versions of Django will probably work just fine.
+The point is, this package follows the upstream code in `django.contrib.auth.models` closely, in order to provide a drop-in replacement for `django.contrib.auth.models.AbstractUser`. Current versions of Django will be supported, and unsupported/EOL versions will be officially unsupported. In reality, the relevant upstream code doesn't change very much very often, so older versions of Django will probably work just fine.
 
 ## Installation
 
