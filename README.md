@@ -58,7 +58,9 @@ The point of this package is to provide a minimal, unopinionated baseline for cu
 
 ## Code of Conduct
 
-You have heard of the Golden Rule. Taleb's [Silver Rule](https://www.goodreads.com/book/show/36064445-skin-in-the-game) is more robust. *"Do not treat others the way you would not like them to treat you."*
+You have heard of the Golden Rule. Taleb's [Silver Rule](https://www.goodreads.com/book/show/36064445-skin-in-the-game) is more robust.
+
+*"Do not treat others the way you would not like them to treat you."*
 
 ## Based?
 
